@@ -5,7 +5,7 @@ const Banner = ({setIsBannerClosed}) => {
         setIsBannerClosed(prevState => !prevState );
     }
   return (
-    <div className='p-3 bg-blue-950 text-white flex justify-between'>
+    <div className='text-xs md:text-sm p-3 bg-blue-950 text-white flex justify-between'>
         <p>This application is currently under development and is in its beta version. Thank you for your patience and understanding.</p>
         <button onClick={handleClose}>❌</button>
 
