@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const AudioCard = ({ poster, name, year, download, index, handlePlayButtonClick, playingIndex }) => {
     const isPlaying = playingIndex === index;
@@ -25,6 +25,4 @@ const AudioCard = ({ poster, name, year, download, index, handlePlayButtonClick,
     </div>
   );
 };
-{/* <a href={download} download><p className="md:text-2xl">▶️ </p></a>
-          <a href={download} download><p className="md:text-2xl">⬇️</p></a> */}
 export default AudioCard;
