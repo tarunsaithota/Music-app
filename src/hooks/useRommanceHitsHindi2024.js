@@ -10,7 +10,6 @@ const useRommanceHitsHindi2024 = () => {
       "https://saavn.dev/api/playlists?query=now-trending&id=903166403&limit=40&page=1"
     );
     const json = await result.json();
-    console.log(json.data);
     dispatch(addRommanceHitsHindi2024(json.data.songs));
   };
 

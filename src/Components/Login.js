@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {validateForm} from "../Utils/validateForm";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously  } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import Head from "./Head";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const setPasswordRef = useRef(null);
@@ -68,6 +70,18 @@ const Login = () => {
     }
   };
 
+  const handleGuestLogin = (e) => {
+    e.preventDefault();
+    signInAnonymously(auth)
+      .then(() => {
+        navigate('/browse');
+      })
+      .catch((error) => {
+        console.error("Guest login failed:", error.message);
+        navigate('/errorPage');
+      });
+  };
+
   return (
     <>
       <Head />
@@ -78,8 +92,8 @@ const Login = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <form className=" w-10/12 md:w-4/12 absolute p-12 bg-black my-40 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-85">
-        <h1 className="font-bold text-3xl py-4">
+      <div className=" w-10/12 md:w-4/12 absolute p-10 md:p-12 bg-black mt-28 md:my-40 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-85">
+        <h1 className="font-bold text-2xl md:text-3xl py-4">
           {signUp ? "Sign Up" : "Sign In"}
         </h1>
         <input
@@ -115,7 +129,7 @@ const Login = () => {
         )}
 
         <button
-          className="p-3 my-5 bg-red-600 w-full rounded-md"
+          className="p-3 mt-5 bg-red-600 w-full rounded-md"
           onClick={signUp ? handleSignUp : handleSignIn}
         >
           {signUp ? "Sign Up" : "Sign In"}
@@ -127,20 +141,21 @@ const Login = () => {
           {signUp ? (
             <>
               Already have an account?.. 
-              <a href="" onClick={toggleSignInSignUp} className="font-bold text-lg underline">
+              <a href="" onClick={toggleSignInSignUp} className="font-semibold md:font-bold text-lg underline text-blue-300">
                 Sign In
               </a>
             </>
           ) : (
             <>
+              <button onClick={handleGuestLogin} className="p-3 py-2 mb-4 bg-blue-300 w-full rounded-md">Guest login</button>
               New user?..
-              <a href="" onClick={toggleSignInSignUp} className="font-bold text-lg underline">
+              <a href="" onClick={toggleSignInSignUp} className="font-semibold md:font-bold text-lg underline text-blue-300">
                 Sign Up
               </a>
             </>
           )}
         </p>
-      </form>
+      </div>
     </>
   );
 };

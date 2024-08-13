@@ -46,7 +46,7 @@ const Head = () => {
   return (
     <>
     {!isBannerClosed && <Banner setIsBannerClosed={setIsBannerClosed}/>}
-    <div className="grid grid-flow-col p-2 md:pt-3 justify-between bg-black text-white">
+    <div className="grid grid-flow-col p-3 md:p-2 md:pt-3 justify-between bg-black text-white">
       <div className="flex col-span-2 md:col-span-2 pl-2 md:pl-4">
         <img className="hidden md:h-7 text-white cursor-pointer" onClick={handleToggleMenu}
           src={LOGO}
@@ -64,7 +64,7 @@ const Head = () => {
       </div>
       <div className="col-span-4 md:col-span-1 flex">
         <img className="h-6 md:h-10 pt-1  rounded-full" src='https://us.123rf.com/450wm/tifani1/tifani11801/tifani1180100032/93016694-user-icon-vector-illustration-on-black-background.jpg' alt='user_icon'/>
-        <button className="" onClick={handleSignOut}>Logout</button>
+        <button className="" onClick={handleSignOut}>{userDetails?.email ? 'Logout' : 'Login'}</button>
       </div></>}
     </div>
     </>
