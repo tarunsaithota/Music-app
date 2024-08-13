@@ -84,7 +84,7 @@ const Login = () => {
         </h1>
         <input
           type="text"
-          placeholder="Email or mobile number"
+          placeholder="Email"
           ref={emailRef}
           className="p-3 my-3 w-full bg-gray-800"
         />
@@ -127,15 +127,15 @@ const Login = () => {
           {signUp ? (
             <>
               Already have an account?.. 
-              <a href="" onClick={toggleSignInSignUp}>
+              <a href="" onClick={toggleSignInSignUp} className="font-bold text-lg underline">
                 Sign In
               </a>
             </>
           ) : (
             <>
               New user?..
-              <a href="" onClick={toggleSignInSignUp}>
-                Sign Up now
+              <a href="" onClick={toggleSignInSignUp} className="font-bold text-lg underline">
+                Sign Up
               </a>
             </>
           )}
