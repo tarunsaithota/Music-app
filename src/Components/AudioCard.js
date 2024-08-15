@@ -25,4 +25,4 @@ const AudioCard = ({ poster, name, year, download, index, handlePlayButtonClick,
     </div>
   );
 };
-export default AudioCard;
+export default React.memo(AudioCard);

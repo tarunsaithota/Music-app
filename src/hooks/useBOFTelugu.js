@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addBOFTelugu } from "../Utils/songsSlice";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const useBOFTelugu = () => {
   const dispatch = useDispatch();
@@ -18,4 +18,4 @@ const useBOFTelugu = () => {
   }, []);
 };
 
-export default useBOFTelugu;
+export default (useBOFTelugu);

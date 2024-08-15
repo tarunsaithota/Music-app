@@ -51,4 +51,4 @@ const VideoContainer = ({title, songsList}) => {
   )
 }
 
-export default VideoContainer;
+export default React.memo(VideoContainer);
